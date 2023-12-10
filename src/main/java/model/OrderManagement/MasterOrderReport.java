@@ -47,9 +47,8 @@ public class MasterOrderReport {
         System.out.println("Master Order Report");
         for (OrderSummary os : orderSummaryList) {
             int index = orderSummaryList.indexOf(os);
-            System.out.print((index + 1) + " ");
+            System.out.print((index + 1) + ". ");
             os.printOrderSummary();
         }
-
     }
 }

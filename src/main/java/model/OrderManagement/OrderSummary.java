@@ -10,29 +10,40 @@ package model.OrderManagement;
  * @author kal bugrara
  */
 public class OrderSummary {
-    int salesvolume;
-    int numberOfItems;
-    boolean totalabovetarget;
-    int orderpriceperformance;
-    int numberofOrderitemsabovetarget;
-    String customerId;
-    
-public OrderSummary(Order o){
-    salesvolume = o.getOrderTotal();
-    numberOfItems = o.getNumberOfItems();
-    totalabovetarget = o.isOrderAboveTotalTarget();
-    orderpriceperformance = o.getOrderPricePerformance();
-    numberofOrderitemsabovetarget = o.getNumberOfOrderItemsAboveTarget();
-    customerId = o.getCustomerId();
-    
+    private int salesvolume;
+    private int numberOfItems;
+    private boolean totalabovetarget;
+    private int orderpriceperformance;
+    private int numberofOrderitemsabovetarget;
+    private String customerId;
+    private boolean usedAds;
 
-}
-public int getOrderProfit(){
-    return orderpriceperformance;
-}
+    public OrderSummary(Order o) {
+        this.salesvolume = o.getOrderTotal();
+        this.numberOfItems = o.getNumberOfItems();
+        this.totalabovetarget = o.isOrderAboveTotalTarget();
+        this.orderpriceperformance = o.getOrderPricePerformance();
+        this.numberofOrderitemsabovetarget = o.getNumberOfOrderItemsAboveTarget();
+        this.customerId = o.getCustomerId();
+        this.usedAds = o.getIsOrderWithAds();
 
-public void printOrderSummary(){
-    System.out.println("| " + customerId + " | " + numberOfItems + " | " + salesvolume);
-}
+    }
+
+    public int getOrderProfit() {
+        return orderpriceperformance;
+    }
+
+    public int getNumberOfItems() {
+        return this.numberOfItems;
+    }
+
+    public int getSalesVolume() {
+        return this.salesvolume;
+    }
+
+    public void printOrderSummary() {
+        System.out.println("Customer Name: " + customerId + " | Number of Items: " + numberOfItems + " | Sales Volumn: "
+                + salesvolume + "| Used Discount: " + this.usedAds);
+    }
 
 }

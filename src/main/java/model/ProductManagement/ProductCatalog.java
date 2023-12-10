@@ -8,6 +8,8 @@ package model.ProductManagement;
 import java.util.ArrayList;
 import java.util.Random;
 
+import model.MarketModel.Market;
+
 /**
  *
  * @author kal bugrara
@@ -28,14 +30,14 @@ public class ProductCatalog {
         products = new ArrayList<Product>();
     }
 
-    public Product newProduct(int fp, int cp, int tp) {
-        Product p = new Product(fp, cp, tp);
+    public Product newProduct(int fp, int cp, int tp, Market market) {
+        Product p = new Product(fp, cp, tp, market);
         products.add(p);
         return p;
     }
 
-    public Product newProduct(String n, int fp, int cp, int tp) {
-        Product p = new Product(n, fp, cp, tp);
+    public Product newProduct(String n, int fp, int cp, int tp, Market market) {
+        Product p = new Product(n, fp, cp, tp, market);
         products.add(p);
         return p;
     }

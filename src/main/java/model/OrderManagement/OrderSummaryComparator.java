@@ -6,10 +6,11 @@ public class OrderSummaryComparator implements Comparator<OrderSummary> {
 
     @Override
     public int compare(OrderSummary o1, OrderSummary o2) {
-        
-        if (Integer.compare(o2.numberOfItems, o1.numberOfItems) != 0) return Integer.compare(o2.numberOfItems, o1.numberOfItems);
 
-        return Integer.compare(o2.salesvolume, o1.salesvolume);
+        if (Integer.compare(o2.getNumberOfItems(), o1.getNumberOfItems()) != 0)
+            return Integer.compare(o2.getNumberOfItems(), o1.getNumberOfItems());
+
+        return Integer.compare(o2.getSalesVolume(), o1.getSalesVolume());
     }
-    
+
 }

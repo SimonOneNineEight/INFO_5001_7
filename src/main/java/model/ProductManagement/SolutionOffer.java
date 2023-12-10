@@ -14,22 +14,60 @@ import model.MarketModel.MarketChannelAssignment;
  * @author kal bugrara
  */
 public class SolutionOffer {
-    ArrayList<Product> products;
-    int price;// floor, ceiling, and target ideas
-    MarketChannelAssignment marketChannelComb;
+    private ArrayList<Product> products;
+    private int price;// floor, ceiling, and target ideas
+    private MarketChannelAssignment marketChannelComb;
+    private String ads;
 
     public SolutionOffer(MarketChannelAssignment m) {
-        marketChannelComb = m;
-        products = new ArrayList<Product>();
+        this.marketChannelComb = m;
+        this.products = new ArrayList<Product>();
+        this.ads = "nothing!";
+    }
+
+    public SolutionOffer(MarketChannelAssignment m, ArrayList<Product> products) {
+        this.marketChannelComb = m;
+        this.products = products;
+        this.ads = "nothing!";
+    }
+
+    public SolutionOffer(MarketChannelAssignment m, ArrayList<Product> products, String ads) {
+        this.marketChannelComb = m;
+        this.products = products;
+        this.ads = ads;
     }
 
     public void addProduct(Product p) {
-        products.add(p);
+        this.products.add(p);
     }
 
     public void setPrice(int p) {
-        price = p;
+        this.price = p;
+    }
 
+    public int getPrice() {
+        return this.price;
+    }
+
+    public String getAds() {
+        return this.ads;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return this.products;
+    }
+
+    public MarketChannelAssignment getMarketChannel() {
+        return this.marketChannelComb;
+    }
+
+    public String getProductsListString() {
+        ArrayList<String> productNames = new ArrayList<>();
+        for (Product p : products) {
+            productNames.add(p.getName());
+        }
+
+        return String.join(", ", productNames);
     }
 
 }

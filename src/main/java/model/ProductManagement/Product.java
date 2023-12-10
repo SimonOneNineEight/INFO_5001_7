@@ -7,6 +7,7 @@ package model.ProductManagement;
 
 import java.util.ArrayList;
 
+import model.MarketModel.Market;
 import model.OrderManagement.OrderItem;
 
 /**
@@ -18,22 +19,25 @@ public class Product {
     private int floorPrice;
     private int ceilingPrice;
     private int targetPrice;
-    ArrayList<OrderItem> orderItems;
+    private Market market;
+    private ArrayList<OrderItem> orderItems;
 
-    public Product(int fp, int cp, int tp) {
-
-        floorPrice = fp;
-        ceilingPrice = cp;
-        targetPrice = tp;
-        orderItems = new ArrayList<OrderItem>();
+    public Product(int fp, int cp, int tp, Market market) {
+        this.floorPrice = fp;
+        this.ceilingPrice = cp;
+        this.targetPrice = tp;
+        this.orderItems = new ArrayList<OrderItem>();
+        this.market = market;
     }
 
-    public Product(String n, int fp, int cp, int tp) {
-        name = n;
-        floorPrice = fp;
-        ceilingPrice = cp;
-        targetPrice = tp;
-        orderItems = new ArrayList<OrderItem>();
+    public Product(String n, int fp, int cp, int tp, Market market) {
+        this.name = n;
+        this.floorPrice = fp;
+        this.ceilingPrice = cp;
+        this.targetPrice = tp;
+        this.orderItems = new ArrayList<OrderItem>();
+        this.market = market;
+        this.market.addProduct(this);
     }
 
     public Product updateProduct(int fp, int cp, int tp) {
@@ -102,6 +106,10 @@ public class Product {
 
     public void setName(String n) {
         name = n;
+    }
+
+    public Market getMarket() {
+        return this.market;
     }
 
     @Override

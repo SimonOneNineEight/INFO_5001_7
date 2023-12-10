@@ -42,17 +42,18 @@ public class Business {
     MarketingPersonDirectory marketingpersondirectory;
 
     public Business(String n) {
-        name = n;
-        masterorderlist = new MasterOrderList();
-        suppliers = new SupplierDirectory();
-//        solutionoffercatalog = new SolutionOfferCatalog();
-        persondirectory = new PersonDirectory();
-        customerdirectory = new CustomerDirectory(this);
-        salespersondirectory = new SalesPersonDirectory(this);
-        useraccountdirectory = new UserAccountDirectory();
-        marketingpersondirectory = new MarketingPersonDirectory(this);
-        employeedirectory = new EmployeeDirectory(this);
-
+        this.name = n;
+        this.masterorderlist = new MasterOrderList();
+        this.suppliers = new SupplierDirectory();
+        this.solutionoffercatalog = new SolutionOfferCatalog(this);
+        this.persondirectory = new PersonDirectory();
+        this.customerdirectory = new CustomerDirectory(this);
+        this.salespersondirectory = new SalesPersonDirectory(this);
+        this.useraccountdirectory = new UserAccountDirectory();
+        this.marketingpersondirectory = new MarketingPersonDirectory(this);
+        this.employeedirectory = new EmployeeDirectory(this);
+        this.marketcatalog = new MarketCatalog(this);
+        this.channelcatalog = new ChannelCatalog(this);
     }
 
     public int getSalesVolume() {
@@ -67,6 +68,7 @@ public class Business {
     public UserAccountDirectory getUserAccountDirectory() {
         return useraccountdirectory;
     }
+
     public MarketingPersonDirectory getMarketingPersonDirectory() {
         return marketingpersondirectory;
     }
@@ -93,7 +95,7 @@ public class Business {
 
     public int getHowManySupplierProductsAlwaysAboveTarget(String n) {
         ProductsReport productsreport = getSupplierPerformanceReport(n); // see above
-        int i = productsreport.getProductsAlwaysAboveTarget().size(); //return size of the arraylist
+        int i = productsreport.getProductsAlwaysAboveTarget().size(); // return size of the arraylist
         return i;
     }
 
@@ -108,11 +110,24 @@ public class Business {
     public MasterOrderList getMasterOrderList() {
         return masterorderlist;
     }
-        public EmployeeDirectory getEmployeeDirectory() {
+
+    public EmployeeDirectory getEmployeeDirectory() {
         return employeedirectory;
     }
 
-    public void printShortInfo(){
+    public SolutionOfferCatalog getSolutionOfferCatalog() {
+        return this.solutionoffercatalog;
+    }
+
+    public MarketCatalog getMarketCatalog() {
+        return this.marketcatalog;
+    }
+
+    public ChannelCatalog getChannelCatalog() {
+        return this.channelcatalog;
+    }
+
+    public void printShortInfo() {
         System.out.println("Checking what's inside the business hierarchy.");
         suppliers.printShortInfo();
         customerdirectory.printShortInfo();

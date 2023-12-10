@@ -10,15 +10,26 @@ package model.MarketModel;
  * @author kal bugrara
  */
 public class MarketChannelAssignment {
-    
-    Market market;
-    Channel channel;
-    
-    public MarketChannelAssignment(Market m, Channel c){
-        
-        market = m;
-        channel = c;
-        
+    private Market market;
+    private Channel channel;
+    private double ratio;
+
+    public MarketChannelAssignment(Market m, Channel c, double ratio) {
+        this.market = m;
+        this.channel = c;
+        this.ratio = ratio;
     }
-    
+
+    public Market getMarket() {
+        return this.market;
+    }
+
+    public Channel getChannel() {
+        return this.channel;
+    }
+
+    public double getChannelRatio() {
+        return this.ratio;
+    }
+
 }

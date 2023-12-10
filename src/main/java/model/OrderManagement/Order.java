@@ -17,15 +17,12 @@ import model.SalesManagement.SalesPersonProfile;
  * @author kal bugrara
  */
 public class Order {
-
     ArrayList<OrderItem> orderItems;
     CustomerProfile customer;
     SalesPersonProfile salesperson;
     MarketChannelAssignment mca;
     String status;
-
-    public Order() {
-    }
+    boolean isAdvertised;
 
     public Order(CustomerProfile cp) {
         orderItems = new ArrayList<OrderItem>();
@@ -41,6 +38,25 @@ public class Order {
         salesperson = ep;
         customer.addCustomerOrder(this); // we link the order to the customer
         salesperson.addSalesOrder(this);
+    }
+
+    public Order(CustomerProfile customerProfile, MarketChannelAssignment mca) {
+        this.orderItems = new ArrayList<OrderItem>();
+        this.customer = customerProfile;
+        this.customer.addCustomerOrder(this); // we link the order to the customer
+        this.salesperson = null;
+        this.status = "in process";
+        this.mca = mca;
+    }
+
+    public Order(CustomerProfile customerProfile, MarketChannelAssignment mca, boolean isAdvertised) {
+        this.orderItems = new ArrayList<OrderItem>();
+        this.customer = customerProfile;
+        this.customer.addCustomerOrder(this); // we link the order to the customer
+        this.salesperson = null;
+        this.status = "in process";
+        this.mca = mca;
+        this.isAdvertised = isAdvertised;
     }
 
     public OrderItem newOrderItem(Product p, int actualPrice, int q) {
@@ -104,5 +120,17 @@ public class Order {
 
     public String getCustomerId() {
         return customer.getCustomerId();
+    }
+
+    public void setIsAdvertised(boolean isAdvertised) {
+        this.isAdvertised = isAdvertised;
+    }
+
+    public MarketChannelAssignment getMarketChannelAssignment() {
+        return this.mca;
+    }
+
+    public boolean getIsOrderWithAds() {
+        return this.isAdvertised;
     }
 }
